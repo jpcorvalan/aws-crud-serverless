@@ -12,5 +12,9 @@
     "aws-sdk": "^2.1557.0",
     "serverless": "^3.21.0",
     "serverless-offline": "^13.3.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.4",
+    "serverless-dynamodb": "^0.2.50"
   }
 }

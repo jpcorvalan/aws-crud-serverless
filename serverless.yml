@@ -9,7 +9,7 @@ plugins:
 
 functions:              # Definimos que funciones son las que se van a ejecutar en la nube
   get-users:          # Nombre arbitrario para nuestra función
-    handler: handler.hello    # La sintaxis es nombreArchivo.funcion
+    handler: handler.getUsers    # La sintaxis es nombreArchivo.funcion
     events:                   # Definimos bajo que lógica se va a ejecutar esta lambda
       - http:
           path: users

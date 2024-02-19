@@ -1,8 +1,4 @@
 const aws = require("aws-sdk");
-require('dotenv').config();
-
-const accessKeyId = process.env.DEFAULT_ACCESS_KEY;
-const secretKeyId = process.env.DEFAULT_SECRET;
 
 // const dynamodbClient = new aws.DynamoDB.DocumentClient();        constante para ejecutar en la nube
 
@@ -10,6 +6,11 @@ const secretKeyId = process.env.DEFAULT_SECRET;
 let dynamoDbClientParams = {}
 
 if (process.env.IS_OFFLINE) {
+    require('dotenv').config();
+
+    const accessKeyId = process.env.DEFAULT_ACCESS_KEY;
+    const secretKeyId = process.env.DEFAULT_SECRET;
+    
     dynamoDbClientParams = {                                      // constante para ejecutar en local
         region: 'localhost',
         endpoint: 'http://localhost:8000',

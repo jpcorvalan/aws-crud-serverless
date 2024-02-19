@@ -16,11 +16,17 @@ plugins:
 
 functions:              # Definimos que funciones son las que se van a ejecutar en la nube
   get-users:          # Nombre arbitrario para nuestra función
-    handler: handler.getUsers    # La sintaxis es nombreArchivo.funcion
+    handler: getUsers/handler.getUsers    # La sintaxis es nombreArchivo.funcion
     events:                   # Definimos bajo que lógica se va a ejecutar esta lambda
       - http:
           path: users/{id}
           method: GET
+  create-users:
+    handler: createUsers/handler.createUsers
+    events:
+      - http:
+          path: users
+          method: POST
 
 custom:
   dynamodb:

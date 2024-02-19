@@ -2,7 +2,13 @@ service: crud-serverless-users
 
 provider:
   name: aws
-  runtime: nodejs14.x   # Acá puede ser cualquier runtime, como Go, Java, Python, etc
+  runtime: nodejs16.x #nodejs14.x   # Acá puede ser cualquier runtime, como Go, Java, Python, etc
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action: 'dynamodb:*'  # Permitimos todo pero lo restringimos con la siguiente línea
+          Resource: arn:aws:dynamodb:us-east-1:654654297903:table/usersTable
   
 plugins:
   - serverless-offline
@@ -13,7 +19,7 @@ functions:              # Definimos que funciones son las que se van a ejecutar 
     handler: handler.getUsers    # La sintaxis es nombreArchivo.funcion
     events:                   # Definimos bajo que lógica se va a ejecutar esta lambda
       - http:
-          path: users
+          path: users/{id}
           method: GET
 
 custom:

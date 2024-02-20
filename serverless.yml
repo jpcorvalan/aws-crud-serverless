@@ -33,6 +33,12 @@ functions:              # Definimos que funciones son las que se van a ejecutar 
       - http:
           path: users
           method: POST
+  update-users:
+    handler: updateUsers/handler.updateUsers
+    events:
+      - http:
+          path: users/{id}
+          method: PATCH
 
 custom:
   dynamodb:

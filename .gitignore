@@ -3,3 +3,16 @@ node_modules
 .env
 .dynamodb
 .vscode
+.idea
+
+*.class
+target
+/bin/
+/.settings/
+.project
+.classpath
+
+# Package Files
+*.jar
+*.war
+*.ear

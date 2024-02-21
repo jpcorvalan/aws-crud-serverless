@@ -39,6 +39,15 @@ functions:              # Definimos que funciones son las que se van a ejecutar 
       - http:
           path: users/{id}
           method: PATCH
+  delete-users:
+    handler: com.serverless.Handler::handleRequest
+    runtime: java11
+    package:
+      artifact: deleteUsers/target/deleteUsers-dev.jar
+    events:
+      - http:
+          path: users/{id}
+          method: DELETE
 
 custom:
   dynamodb:

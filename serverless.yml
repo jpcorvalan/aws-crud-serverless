@@ -14,27 +14,38 @@ plugins:
   - serverless-offline
   - serverless-dynamodb
 
-package:            # Definimos que queremos que se empaquete para la subida a la nube, con ! negamos
+package:               # Definimos que queremos que se empaquete para la subida a la nube, con ! negamos
   individually: true
+  exclude:
+    - .env
+    - node_modules/**
   patterns:
-    - "!.dynamodb"
-    - "!node_modules"
+    - "!*/**"
 
 functions:              # Definimos que funciones son las que se van a ejecutar en la nube
   get-users:          # Nombre arbitrario para nuestra función
     handler: getUsers/handler.getUsers    # La sintaxis es nombreArchivo.funcion
+    package:
+      patterns:
+        - "getUsers/handler.js"
     events:                   # Definimos bajo que lógica se va a ejecutar esta lambda
       - http:
           path: users/{id}
           method: GET
   create-users:
     handler: createUsers/handler.createUsers
+    package:
+      patterns:
+        - "createUsers/handler.js"
     events:
       - http:
           path: users
           method: POST
   update-users:
     handler: updateUsers/handler.updateUsers
+    package:
+      patterns:
+        - "updateUsers/handler.js"
     events:
       - http:
           path: users/{id}
